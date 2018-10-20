@@ -11,6 +11,10 @@ class Extra {
 			return true;
 		}
 	}
+	static randNumb (str) {
+        const rand =  Math.floor(Math.random() * 100000) + 10000;
+        return `${str}${rand}`;
+	}
 }
 
 export default Extra;

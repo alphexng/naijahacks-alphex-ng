@@ -98,6 +98,22 @@ class UserM {
 			}
 		)
     }
+    
+    static verifyAdminToken (req,resp,next) {
+        const toks = req.tokenId;
+
+        db.query(AdminQuery.checkAdminQuery(toks))
+        .then((res) => {
+            if (res.rows.length < 1) {
+                return resp.status(401).send({
+                    status: 'error',
+                    message: 'You are not authorized'
+                })
+            }else{
+                next();
+            }
+        })
+    }
 }
 
 export default UserM;
