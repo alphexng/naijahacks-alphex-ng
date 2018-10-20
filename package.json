@@ -4,8 +4,12 @@
   "description": "Naijahacks Project - Alphex Election",
   "main": "./server/index.js",
   "scripts": {
-    "start": "nodemon ./server/index.js --exec babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run dbmigrate & nodemon ./server/index.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dbmigrate": "npm run dbdrop && npm run dbsetup && npm run dbseed",
+    "dbsetup": "babel-node ./server/model/setup.js",
+    "dbdrop": "babel-node ./server/model/drop.js",
+    "dbseed": "babel-node ./server/model/seed.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +33,11 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
-    "express": "^4.16.4"
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "parse-database-url": "^0.3.0",
+    "pg": "^7.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
