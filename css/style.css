@@ -3,12 +3,21 @@
   padding: 0;
 }
 
+html, body{
+  min-height: 100% !important;
+  height: 100%;
+}
+
 body{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 ul{
   list-style:none;
+}
+
+.color{
+  color: rgb(32, 168, 14);
 }
 
 #side-nav{
@@ -44,7 +53,6 @@ ul{
 .side{
   margin-left:18%;
   padding:1px 16px;
-  height:100%;
 }
 
 #main-nav {
@@ -78,17 +86,37 @@ ul{
   font-size:40px;
 }
 
-.elections {
+.head-text-2{
+  padding:10px;
+  font-size:20px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.dates {
+  display: inline-block;
+  float:right;
+  padding: 30px;
+}
+
+.elections, .candidates {
   margin:40px;
 }
+
 
 .card{
   width:25%;
   display: inline-block;
   margin: 30px;
-  border: 2px solid #000;
   border-radius: 10px;
-  box-shadow:1px 1px rgba(59, 59, 59, 0.767);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
 }
 
 .card>img{
@@ -103,7 +131,7 @@ ul{
 
 .card-text p{
   padding:10px 0;
-  font-size:20px;
+  font-size:16px;
   font-style: italic;
 }
 
@@ -140,3 +168,109 @@ footer .copyright{
   font-size:30px;
 }
 
+/* Login Page */
+.login{
+  height: 100%;
+  background-image: url('../img/flag-img.jpg');
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+  background-size: cover;
+  overflow: auto;
+}
+
+.login-form{
+  width: 35%;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+  height: auto;
+  background-color: #fff;
+  position: relative;
+  top:200px;
+  margin:0 450px;
+}
+
+.login-form img {
+  width:40px;
+  height:40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 60px;
+}
+
+.login-form h2{
+  text-align: center;
+  padding:15px 20px;
+  font-size:30px;
+  width:45%;
+  display:inline-block;
+}
+
+.login-form label{
+  display: block;
+  padding:10px;
+  font-size:20px;
+}
+
+.form-group{
+  padding: 10px 40px;
+}
+
+.form-input{
+  width:50%;
+  padding:10px;
+  height: 20px;
+  border-radius:10px;
+  border:0.5px solid rgba(0, 0, 0, 0.5);
+}
+
+.login-form button {
+  padding:15px 45px;
+  background-color:  rgb(32, 168, 14);
+  color: #fff;
+  margin:20px 0 10px 180px;
+  border-radius: 10px;
+  border:none;
+  transition: 0.5s all;
+  font-size: 15px;
+}
+
+.login-form button:hover {
+  background-color:rgb(32, 32, 32);
+  cursor:pointer;
+  font-size: 15px;
+  transform: scale(1.2);
+}
+
+.head-tab ul li {
+  font-weight: bold;
+}
+
+.tab{
+  margin:10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+  transition: 0.5s all;
+}
+
+.tab:hover{
+  transform: scale(1.03);
+}
+
+.tab ul li {
+  display: inline-block;
+  padding: 10px 10px;
+  width: 150px;
+}
+
+.candidate-btn{
+  padding:6px 30px;
+  background-color: rgb(32, 168, 14);
+  color: #fff;
+  font-size: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.candidate-btn:hover {
+  background-color: #000;
+}

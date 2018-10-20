@@ -25,3 +25,8 @@ $('#nav-toggle').click(() => {
     showNav();
   }
 })
+
+$('#view-btn').click(() => {
+  let tab = $(this).parent('.tab');
+  tab.css("height", "300px");
+})
