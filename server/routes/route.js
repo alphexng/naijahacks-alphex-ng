@@ -1,6 +1,7 @@
 import UserM from "../middleware/user";
 import Validate from "../middleware/validate";
 import User from "../controllers/userControl";
+import Admin from "../controllers/adminControl";
 
 const Route = (app) => {
     app.post(
@@ -8,6 +9,13 @@ const Route = (app) => {
         Validate.validateLogin,
         UserM.loginCredentials,
         User.login
+    )
+
+    app.post(
+        '/api/auth/admin',
+        Validate.validateLogin,
+        UserM.adminLoginCredentials,
+        Admin.login
     )
 }
 
