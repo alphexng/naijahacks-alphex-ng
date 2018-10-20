@@ -1,6 +1,6 @@
 class User {
     static login (req,resp) {
-        resp.status(200).send({
+        return resp.status(200).send({
             status: "success",
             message: 'Login successful',
             token: req.token,
