@@ -72,6 +72,95 @@ class Validate {
 
         next();
     }
+
+    static validateCandidate (req,resp,next) {
+        const firstname = req.body.firstname;
+        const surname = req.body.surname;
+        const dob = req.body.dob;
+        const email = req.body.email;
+        const address = req.body.address;
+        const political_party = req.body.political_party;
+        const tenure = req.body.tenure;
+        const current_office = req.body.current_office;
+        if (firstname==null
+            || firstname.length===0
+            || Extra.hasWhiteSpace(firstname)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Firstname field cannot be left empty"
+            })
+        }
+        if (surname==null
+            || surname.length===0
+            || Extra.hasWhiteSpace(surname)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Surname field cannot be left empty"
+            })
+        }
+        if (dob==null
+            || dob.length===0
+            || Extra.hasWhiteSpace(dob)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "DOB field cannot be left empty"
+            })
+        }
+        if (email==null
+            || email.length===0
+            || Extra.hasWhiteSpace(email)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Email field cannot be left empty"
+            })
+        }
+        if (Extra.validateEmail(email)===false){
+            return resp.status(400).send({
+                status: "error",
+                message: "Invalid email syntax"
+            })
+        }
+        if (address==null
+            || address.length===0
+            || Extra.hasWhiteSpace(address)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Address field cannot be left empty"
+            })
+        }
+        if (political_party==null
+            || political_party.length===0
+            || Extra.hasWhiteSpace(political_party)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Political Party field cannot be left empty"
+            })
+        }
+        if (tenure==null
+            || tenure.length===0
+            || Extra.hasWhiteSpace(tenure)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Tenure field cannot be left empty"
+            })
+        }
+        if (isNaN(tenure)) {
+            return resp.status(400).send({
+                status: 'error',
+                message: 'Tenure parameter must be a number'
+            });
+        }
+        if (current_office==null
+            || current_office.length===0
+            || Extra.hasWhiteSpace(current_office)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Current Office field cannot be left empty"
+            })
+        }
+
+        next();
+    }
 }
 
 export default Validate;
