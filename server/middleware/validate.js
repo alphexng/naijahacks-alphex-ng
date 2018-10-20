@@ -21,10 +21,10 @@ class Validate {
                 message: "Password field cannot be left empty"
             })
         }
-        if (Extra.validateInput(password,8,20)===false) {
+        if (Extra.validateInput(password,8,50)===false) {
             return resp.status(400).send({
                 status: "error",
-                message: "Password: Min Character - 8,Max character - 20"
+                message: "Password: Min Character - 8,Max character - 50"
             })
         }
 

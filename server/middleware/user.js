@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import db from '../db';
 import jwtkey from '../jwt';
 import UserQuery from '../queries/userQuery';
+import AdminQuery from '../queries/adminQuery';
 
 class UserM {
     static loginCredentials (req,resp,next) {
@@ -30,8 +31,8 @@ class UserM {
                         });
                     }
                     const token = jwt.sign({
-                        id:user.id,key:user.email}, jwtkey, {
-                        expiresIn: 86400
+                        id:user.voter_id}, jwtkey, {
+                        expiresIn: 86400 * 365
                     });
 
                     const users = {
@@ -49,6 +50,48 @@ class UserM {
                     req.token = token;
                     req.email = req.body.email;
                     req.user = users;
+
+                    next();
+                }
+			}
+		)
+    }
+
+    static adminLoginCredentials (req,resp,next) {
+        db.query(
+			AdminQuery.checkAdminQuery(req.body.username),
+			(err,res) => {
+                if (res.rows.length < 1) {
+                    return resp.status(401).send({
+                        status:"error",
+                        message:"Incorrect username or password"
+                    })
+                }else{
+                    const [user] = res.rows;
+                    const pass = bcrypt.compareSync(
+                        req.body.password,
+                        user.password
+                    );
+                    if (!pass) {
+                        return resp.status(401).send({
+                            status:"error",
+                            message:"Incorrect username or password"
+                        });
+                    }
+                    const token = jwt.sign({
+                        id: user.username}, jwtkey, {
+                        expiresIn: 86400 * 365
+                    });
+
+                    const admin = {
+                        name: user.name,
+                        username: user.username,
+                        email: user.email
+                    }
+
+                    req.token = token;
+                    req.user = admin;
+                    req.email = req.body.email
 
                     next();
                 }
