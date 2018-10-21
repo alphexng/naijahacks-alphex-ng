@@ -36,6 +36,13 @@ class Election {
             election: req.stats
         })
     }
+
+    static placeVote (req,resp) {
+        return resp.status(201).send({
+            status: 'success',
+            message: 'Vote placed successfully'
+        })
+    }
 }
 
 export default Election;

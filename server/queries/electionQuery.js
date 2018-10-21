@@ -94,6 +94,7 @@ class ElectionQuery {
         return {
             text: `
             SELECT candidate_id,
+            election_id,
             firstname,
             surname,
             dob,
@@ -114,6 +115,37 @@ class ElectionQuery {
             WHERE election_id = $1
             RETURNING *`,
             values: [id,status]
+        }
+    }
+
+    static checkCandidateID (candidate,election) {
+        return {
+            text: `
+            SELECT candidate_id FROM candidates
+            WHERE candidate_id = $1 AND election_id = $2`,
+            values: [candidate,election]
+        }
+    }
+
+    static checkUserVote (voter,election) {
+        return {
+            text: `
+            SELECT voter_id FROM votes
+            WHERE voter_id = $1
+            AND election_id = $2`,
+            values: [voter,election]
+        }
+    }
+
+    static placeVote (voter,candidate,election) {
+        return {
+            text: `
+            INSERT INTO votes (
+                voter_id,
+                candidate_id,
+                election_id
+            ) VALUES ($1,$2,$3) RETURNING *`,
+            values: [voter,candidate,election]
         }
     }
 }

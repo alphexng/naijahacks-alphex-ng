@@ -179,6 +179,66 @@ class ElectionM {
             })
         })
     }
+
+    static checkCandidateID (req,resp,next) {
+        const candidate = req.params.candidate;
+        const election = req.params.id;
+
+        db.query(ElectionQuery.checkCandidateID(
+            candidate,
+            election
+        ))
+        .then((res) => {
+            if (res.rows.length < 1) {
+                return resp.status(404).send({
+                    status: 'error',
+                    message: 'This candidate does not exist for the specified election'
+                })
+            }else{
+                next();
+            }
+        })
+    }
+
+    static checkUserVote (req,resp,next) {
+        db.query(ElectionQuery.checkUserVote(
+            req.tokenId,
+            req.params.id
+        ))
+        .then((res) => {
+            if (res.rows.length > 0) {
+                return resp.status(400).send({
+                    status: 'error',
+                    message: 'You have already voted'
+                })
+            }else{
+                next();
+            }
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'The server encountered an error'
+            })
+        })
+    }
+
+    static placeVote (req,resp,next) {
+        db.query(ElectionQuery.placeVote(
+            req.tokenId,
+            req.params.candidate,
+            req.params.id
+        ))
+        .then((res) => {
+            next();
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'You encountered a server error'
+            })
+        })
+    }
 }
 
 export default ElectionM;
