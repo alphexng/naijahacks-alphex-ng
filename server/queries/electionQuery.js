@@ -75,6 +75,20 @@ class ElectionQuery {
             values: [id,firstname,surname,email]
         }
     }
+
+    static getElectionByCategory (category) {
+        return {
+            text: `
+            SELECT election_id,
+            title,category,
+            date_start,
+            date_end,
+            created_by,
+            status FROM election WHERE category ILIKE $1
+            AND status != $2`,
+            values: [category,'finished']
+        }
+    }
 }
 
 export default ElectionQuery;
