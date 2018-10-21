@@ -30,3 +30,7 @@ $('#view-btn').click(() => {
   let tab = $(this).parent('.tab');
   tab.css("height", "300px");
 })
+
+$("#nav-toggle-header").click(() => {
+  $(".dropdown-nav").toggleClass("dropdown-nav-true");
+})
