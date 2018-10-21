@@ -96,15 +96,17 @@ ul{
 }
 
 .dates {
-  display: inline-block;
   float:right;
-  padding: 30px;
+  padding: 20px;
+}
+
+.dates h4{
+  margin-bottom: 5px;
 }
 
 .elections, .candidates {
   margin:40px;
 }
-
 
 .card{
   width:25%;
@@ -206,7 +208,7 @@ footer .copyright{
   display:inline-block;
 }
 
-.login-form label{
+label{
   display: block;
   padding:10px;
   font-size:20px;
@@ -263,7 +265,7 @@ footer .copyright{
   width: 150px;
 }
 
-.candidate-btn{
+.candidate-btn, .btn, .add-form>button{
   padding:6px 30px;
   background-color: rgb(32, 168, 14);
   color: #fff;
@@ -274,4 +276,70 @@ footer .copyright{
 
 .candidate-btn:hover {
   background-color: #000;
+}
+
+.btn{
+  padding:12px 18px;
+  float:right;
+  margin-top:30px;
+  margin-right: 30px;
+}
+
+.btn:hover, .add-form>button:hover{
+  background-color: rgba(0, 0, 0, 0.842);
+  cursor: pointer;
+}
+
+#inline {
+  display: inline-block;
+  width:fit-content;
+}
+
+#ongoing-election-section{
+  display: block;
+}
+
+#add-election-section{
+  display: none;
+}
+
+.add-form input, .add-form select{
+  height: 40px;
+  width: 30%;
+  border-radius: 10px;
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.add-form .form-group:nth-child(1) input{
+  text-align: left;
+}
+
+.add-form button{
+  padding: 15px 80px;
+  margin:20px 40px;
+}
+
+.badge{
+  background-color: rgb(32, 168, 14);
+  color: #fff;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+#add-candidate{
+  margin-top: -55px;
+  float: right;
+}
+
+#candidates-section{
+  display: block;
+}
+
+#add-candidate-section{
+  display: none;
+}
+
+.form-text{
+  padding:20px;
 }

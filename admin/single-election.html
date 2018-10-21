@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nigeria Election Platform</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav id="side-nav">
+      <div id="nav">
+        <a href="javascript:;" id="nav-toggle">
+          <img src="img/menu.png" alt="Toggle Nav">
+        </a>
+      </div>
+      <ul>
+        <li>
+          <img class="icon" src="img/dashboard.png" alt="Dashboad Icon">
+          <a href="index.html" class="link">Dashboard</a>
+        </li>
+        <li>
+          <img class="icon" src="img/group.png" alt="Federal Icon">
+          <a href="federal.html" class="link">Federal Elections</a>
+        </li>
+        <li>
+          <img class="icon" src="img/users.png" alt="State Icon">
+          <a href="state.html" class="link">State Elections</a>
+        </li>
+        <li>
+          <img class="icon" src="img/user.png" alt="LGA Icon">
+          <a href="lga.html" class="link">LGA Elections</a>
+        </li>
+        <li>
+          <img class="icon" src="img/logout.png" alt="Logout Icon">
+          <a href="#" class="link">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="side">
+    <nav id="main-nav">
+      <ul>
+        <li>
+          <img src="img/flag.png" alt="Nigerian Flag">
+        </li>
+        <li>
+          <span>2019 Elections</span>
+        </li>
+        <li>
+          Welcome Admin
+        </li>
+      </ul>
+    </nav>
+    <h2 class="head-text inline">Lagos State Governorship Election</h2>
+    <div class="dates">
+      <h4 id="status">Status: <span class="badge">Pending</span></h4>
+      <h4 id="start">Start Date: <span>20th May 2019</span></h4>
+      <h4 id="end">End Date: <span>31st July 2019</span></h4>
+    </div>
+    <div id="candidates-section">
+      <button class="btn" id="add-candidate">Add Candidate</button>
+      <section class="candidates">
+        <article class="tab head-tab">
+          <ul>
+            <li>#No</li>
+            <li>Candidate Name</li>
+            <li>Political Party</li>
+            <li>No of Votes</li>
+          </ul>
+        </article>
+        <article class="tab">
+          <ul>
+            <li>1</li>
+            <li>John Doe</li>
+            <li>PDP</li>
+            <li>100</li>
+          </ul>
+        </article>
+        <article class="tab">
+          <ul>
+            <li>2</li>
+            <li>John Doe</li>
+            <li>PDP</li>
+            <li>100</li>
+          </ul>
+        </article>
+        <article class="tab">
+          <ul>
+            <li>3</li>
+            <li>John Doe</li>
+            <li>PDP</li>
+            <li>100</li>
+          </ul>
+        </article>
+        <article class="tab">
+          <ul>
+            <li>4</li>
+            <li>John Doe</li>
+            <li>PDP</li>
+            <li>100</li>
+          </ul>
+        </article>
+        <article class="tab">
+          <ul>
+            <li>5</li>
+            <li>John Doe</li>
+            <li>PDP</li>
+            <li>100</li>
+          </ul>
+        </article>
+        <article class="tab">
+          <ul>
+            <li>6</li>
+            <li>John Doe</li>
+            <li>PDP</li>
+            <li>100</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+    <div id="add-candidate-section">
+      <h2 class="head-text form-text" id="inline">Add Candidate</h2>
+      <form action="#" method="post" id="add-candidate-form" class="add-form">
+        <div class="form-group">
+          <label for="">Candidate Name:</label>
+          <input type="text" class="name" id="name">
+        </div>
+        <div class="form-group">
+          <label for="">Poliicat Party</label>
+          <select name="political-party" id="political-party">
+            <option value="">PDP</option>
+            <option value="">APC</option>
+            <option value="">PDDP</option>
+          </select>
+        </div>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  </main>
+  <footer class="side">
+    <p id="copyright">Copyright &copy; 2019 Nigerian Election Platform.</p>
+  </footer>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/sweetalert.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
