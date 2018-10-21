@@ -89,6 +89,23 @@ class ElectionQuery {
             values: [category,'finished']
         }
     }
+
+    static getElectionCandidates (election) {
+        return {
+            text: `
+            SELECT candidate_id,
+            firstname,
+            surname,
+            dob,
+            email,
+            address,
+            political_party,
+            tenure,
+            current_office FROM candidates
+            WHERE election_id = $1`,
+            values: [election]
+        }
+    }
 }
 
 export default ElectionQuery;

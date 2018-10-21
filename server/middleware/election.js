@@ -132,6 +132,30 @@ class ElectionM {
             })
         })
     }
+
+    static getElectionCandidates (req,resp,next) {
+        db.query(ElectionQuery.getElectionCandidates(
+            req.params.id
+        ))
+        .then((res) => {
+            if (res.rows.length < 1) {
+                return resp.status(404).send({
+                    status: 'error',
+                    message: 'There are no candidates yet'
+                })
+            }else{
+                const ret = res.rows;
+                req.elections = ret;
+                next();
+            }
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'You encountered a server error'
+            })
+        })
+    }
 }
 
 export default ElectionM;

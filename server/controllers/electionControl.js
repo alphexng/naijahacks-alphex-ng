@@ -14,10 +14,18 @@ class Election {
     }
 
     static getElectionByCategory (req,resp) {
-        return resp.status(201).send({
+        return resp.status(200).send({
             status: 'success',
             message: 'Returning all available elections',
             elections: req.elections
+        })
+    }
+
+    static getElectionCandidates (req,resp) {
+        return resp.status(200).send({
+            status: 'success',
+            message: 'Returning all candidates',
+            candidates: req.elections
         })
     }
 }

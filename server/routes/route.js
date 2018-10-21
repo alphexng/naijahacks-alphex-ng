@@ -48,6 +48,14 @@ const Route = (app) => {
         ElectionM.getElectionByCategory,
         Election.getElectionByCategory
     )
+
+    app.get(
+        '/api/election/:id/candidates',
+        tokendecode,
+        ElectionM.checkElectionID,
+        ElectionM.getElectionCandidates,
+        Election.getElectionCandidates
+    )
 }
 
 export default Route;
