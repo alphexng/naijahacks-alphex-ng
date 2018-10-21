@@ -48,7 +48,7 @@ class ElectionM {
         db.query(ElectionQuery.checkElectionID(election))
         .then((res) => {
             if (res.rows.length < 1) {
-                return resp.status(400).send({
+                return resp.status(404).send({
                     status: 'error',
                     message: 'This election does not exist or is no longer available'
                 })
@@ -100,6 +100,30 @@ class ElectionM {
         ))
         .then((res) => {
             next();
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'You encountered a server error'
+            })
+        })
+    }
+
+    static getElectionByCategory (req,resp,next) {
+        db.query(ElectionQuery.getElectionByCategory(
+            req.params.category
+        ))
+        .then((res) => {
+            if (res.rows.length < 1) {
+                return resp.status(404).send({
+                    status: 'error',
+                    message: 'There are no active elections'
+                })
+            }else{
+                const ret = res.rows;
+                req.elections = ret;
+                next();
+            }
         })
         .catch((err) => {
             return resp.status(500).send({
