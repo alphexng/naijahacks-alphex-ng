@@ -161,6 +161,29 @@ class Validate {
 
         next();
     }
+    
+    static validateElectionUpdateStatus (req,resp,next) {
+        const status = req.body.status;
+        const statusArr = ['pending','ongoing','finished'];
+        
+        if (status==null
+            || status.length===0
+            || Extra.hasWhiteSpace(status)) {
+            return resp.status(400).send({
+                status: "error",
+                message: "Status field cannot be left empty"
+            })
+        }
+
+        if (statusArr.includes(status) != true) {
+            return resp.status(400).send({
+                status: 'error',
+                message: 'The status you entered is invalid'
+            });
+        }
+
+        next();
+    }
 }
 
 export default Validate;

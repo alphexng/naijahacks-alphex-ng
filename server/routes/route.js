@@ -56,6 +56,16 @@ const Route = (app) => {
         ElectionM.getElectionCandidates,
         Election.getElectionCandidates
     )
+
+    app.put(
+        '/api/election/:id',
+        tokendecode,
+        UserM.verifyAdminToken,
+        Validate.validateElectionUpdateStatus,
+        ElectionM.checkElectionID,
+        ElectionM.updateElectionStatus,
+        Election.updateElectionStatus
+    )
 }
 
 export default Route;

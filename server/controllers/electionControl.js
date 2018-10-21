@@ -28,6 +28,14 @@ class Election {
             candidates: req.elections
         })
     }
+
+    static updateElectionStatus (req,resp) {
+        return resp.status(200).send({
+            status: 'success',
+            message: 'Election status updated',
+            election: req.stats
+        })
+    }
 }
 
 export default Election;

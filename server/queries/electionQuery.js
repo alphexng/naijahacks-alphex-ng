@@ -28,8 +28,8 @@ class ElectionQuery {
         return {
             text: `
             SELECT election_id FROM election
-            WHERE election_id = $1 AND status = $2`,
-            values: [id,'pending']
+            WHERE election_id = $1 AND status != $2`,
+            values: [id,'finished']
         }
     }
 
@@ -104,6 +104,16 @@ class ElectionQuery {
             current_office FROM candidates
             WHERE election_id = $1`,
             values: [election]
+        }
+    }
+
+    static updateElectionStatus (id,status) {
+        return {
+            text: `
+            UPDATE election SET status = $2
+            WHERE election_id = $1
+            RETURNING *`,
+            values: [id,status]
         }
     }
 }

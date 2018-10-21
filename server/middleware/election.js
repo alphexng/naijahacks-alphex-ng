@@ -156,6 +156,29 @@ class ElectionM {
             })
         })
     }
+
+    static updateElectionStatus (req,resp,next) {
+        db.query(ElectionQuery.updateElectionStatus(
+            req.params.id,
+            req.body.status
+        ))
+        .then((res) => {
+            const [ret] = res.rows;
+            const stats = {
+                id: ret.election_id,
+                title: ret.title,
+                status: ret.status
+            }
+            req.stats = stats;
+            next();
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'You encountered a server error'
+            })
+        })
+    }
 }
 
 export default ElectionM;
