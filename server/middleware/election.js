@@ -16,7 +16,7 @@ class ElectionM {
             }
         })
         .catch((err) => {
-            return resp.status(400).send({
+            return resp.status(500).send({
                 status: 'error',
                 message: 'The server encountered an error'
             })
@@ -33,7 +33,72 @@ class ElectionM {
             req.tokenId
         ))
         .then((res) => {
-            const [ret] = res.rows;
+            next();
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'You encountered a server error'
+            })
+        })
+    }
+
+    static checkElectionID (req,resp,next) {
+        const election = req.params.id;
+        db.query(ElectionQuery.checkElectionID(election))
+        .then((res) => {
+            if (res.rows.length < 1) {
+                return resp.status(400).send({
+                    status: 'error',
+                    message: 'This election does not exist or is no longer available'
+                })
+            }else{
+                next();
+            }
+        })
+    }
+
+    static checkExistingCandidate (req,resp,next) {
+        db.query(ElectionQuery.checkExistingCandidate(
+            req.params.id,
+            req.body.firstname,
+            req.body.surname,
+            req.body.email
+        ))
+        .then((res) => {
+            if (res.rows.length > 0) {
+                return resp.status(400).send({
+                    status: 'error',
+                    message: 'This candidate already exists for this election'
+                })
+            }else{
+                next();
+            }
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'The server encountered an error'
+            })
+        })
+    }
+
+    static addNewCandidate (req,resp,next) {
+        const candidate_id = Extra.randNumb('candidate_');
+        const election = req.params.id;
+        db.query(ElectionQuery.addCandidate(
+            candidate_id,
+            req.body.firstname,
+            req.body.surname,
+            req.body.dob,
+            req.body.email,
+            req.body.address,
+            election,
+            req.body.political_party,
+            req.body.tenure,
+            req.body.current_office
+        ))
+        .then((res) => {
             next();
         })
         .catch((err) => {

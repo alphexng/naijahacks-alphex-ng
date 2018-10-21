@@ -15,6 +15,10 @@ class Extra {
         const rand =  Math.floor(Math.random() * 100000) + 10000;
         return `${str}${rand}`;
 	}
+	static validateEmail(email) {
+		const re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return re.test(String(email).toLowerCase());
+	}
 }
 
 export default Extra;

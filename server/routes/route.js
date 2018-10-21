@@ -30,6 +30,17 @@ const Route = (app) => {
         ElectionM.addNewElection,
         Election.newElection
     )
+
+    app.post(
+        '/api/election/:id/candidate',
+        tokendecode,
+        UserM.verifyAdminToken,
+        Validate.validateCandidate,
+        ElectionM.checkElectionID,
+        ElectionM.checkExistingCandidate,
+        ElectionM.addNewCandidate,
+        Election.newCandidate
+    )
 }
 
 export default Route;
