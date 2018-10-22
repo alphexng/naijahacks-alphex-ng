@@ -212,10 +212,11 @@ footer .copyright{
 /* Login Page */
 .login{
   height: 100%;
-  background-image: url('../img/flag-img.jpg');
-  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url('../img/1.jpeg');
+  background-color: rgba(0, 0, 0, 0.7);
   background-blend-mode: multiply;
   background-size: cover;
+  background-position: center;
   overflow: auto;
 }
 
@@ -250,6 +251,37 @@ footer .copyright{
   display: block;
   padding:10px;
   font-size:20px;
+}
+
+.login-div {
+  margin-top: 200px;
+  width: 400px;
+}
+
+.login-div h3 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.login-div input {
+  background-color: transparent;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(23, 128, 9);
+  color: #fff;
+}
+
+.login-div button {
+  background-color: rgb(23, 128, 9);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
+  outline: none;
 }
 
 .form-group{
@@ -321,9 +353,14 @@ footer .copyright{
   .header {
     display: inherit;
   }
+  .logo {
+    margin-left: 10px;
+    margin-top: 5px;
+  }
   #main-nav {
     width: 100%;
-    padding: 10px;
+    height: 50px;
+    padding: 0;
     background-color: rgb(23, 128, 9);
     position: fixed;
     z-index: 10;
