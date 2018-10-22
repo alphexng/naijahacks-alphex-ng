@@ -135,7 +135,6 @@ ul{
 }
 
 .dates {
-  display: inline-block;
   float:right;
   padding: 30px;
 }
