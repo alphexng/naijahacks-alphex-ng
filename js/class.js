@@ -1,6 +1,12 @@
 const path = 'https://alphexng-election.herokuapp.com';
 
 class AlphexElection {
+    static initUser () {
+        if (localStorage.getItem('electionVoter')!=null) {
+            const user = JSON.parse(localStorage.getItem('electionVoter'));
+            $(".name").html(user.user.name)
+        }
+    }
     static errCall (e,s) {
         const error = document.getElementsByClassName('error');
         if (s == 200 || s == 201) {
@@ -32,7 +38,7 @@ class AlphexElection {
         .then(
             (response) => {
                 response.json().then(function(data) {
-                    FastFood.errCall(data.message,response.status)
+                    AlphexElection.errCall(data.message,response.status)
                     cb(response.status,data);
                     return response.status;
                 });
@@ -40,7 +46,7 @@ class AlphexElection {
         )
         .catch((err) => {
             loader.classList.add('hide');
-            FastFood.errCall('Connection to the server failed',500);
+            AlphexElection.errCall('Connection to the server failed',500);
         });
     }
 
@@ -58,7 +64,7 @@ class AlphexElection {
             }
         )
         .catch((err) => {
-            FastFood.errCall('Connection to the server failed',500);
+            AlphexElection.errCall('Connection to the server failed',500);
         });
     }
 
@@ -71,9 +77,16 @@ class AlphexElection {
             },
             body,(res,data) => {
                 if (res==200) {
-                    console.log(data);
+                    setTimeout(()=>{window.location.href='index.html'},1200)
+                    const user = {
+                        token: data.token,
+                        user: data.user
+                    }
+                    localStorage.setItem('electionVoter',JSON.stringify(user));
                 }
             }
         )
     }
 }
+
+AlphexElection.initUser();

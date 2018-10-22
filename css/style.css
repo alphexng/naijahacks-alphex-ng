@@ -16,6 +16,40 @@ ul{
   list-style:none;
 }
 
+#loader {
+  background-color: rgba(0, 0, 0, .6);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-top: 200px;
+  z-index: 10000;
+}
+
+.error {
+  position: fixed;
+  width: auto;
+  padding: 10px;
+  right: 10px;
+  top: 130px;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 10000;
+}
+
+.hide {
+  display: none !important;
+}
+
+.green {
+  background-color: rgb(5, 146, 64) !important;
+}
+
+.red {
+  background-color: rgb(187, 48, 24) !important;
+}
+
 .color{
   color: rgb(32, 168, 14);
 }
@@ -209,6 +243,46 @@ footer .copyright{
   font-size:30px;
 }
 
+/* Modal */
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  top: 0;
+  z-index: 1000;
+  padding-top: 100px;
+  display: none;
+  transition: 0.5s all;
+}
+
+.modal-show {
+  display: inherit;
+}
+
+.modal-content {
+  background-color: #ddd;
+  width: 400px;
+  padding: 20px;
+  border-radius: 3px;
+  text-align: left;
+}
+
+.modal-content h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.modal-content ul li {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 10px;
+  color: rgb(0, 140, 255);
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
 /* Login Page */
 .login{
   height: 100%;
@@ -218,6 +292,12 @@ footer .copyright{
   background-size: cover;
   background-position: center;
   overflow: auto;
+}
+
+.login-heading {
+  color: #fff;
+  text-align: center;
+  padding-top: 50px;
 }
 
 .login-form{
@@ -254,13 +334,23 @@ footer .copyright{
 }
 
 .login-div {
-  margin-top: 200px;
+  margin-top: 100px;
   width: 400px;
 }
 
 .login-div h3 {
   color: #fff;
   margin-bottom: 20px;
+}
+
+.login-div p {
+  color: #eee;
+  margin-bottom: 10px;
+}
+
+.login-div a {
+  color: rgb(0, 140, 255);
+  text-decoration: none;
 }
 
 .login-div input {
@@ -392,5 +482,27 @@ footer .copyright{
   }
   .card img {
     height: unset;
+  }
+  .login-div {
+    width: 300px;
+  }
+  .login-div input {
+    padding-right: 0;
+  }
+  .login-div h3 {
+    font-size: 18px;
+  }
+  .login-div p {
+    font-size: 14px;
+  }
+  .error {
+    width: 100%;
+    top: unset;
+    right: 0;
+    bottom: 5px;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+  }
+  .modal-content {
+    width: 300px;
   }
 }
