@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Nigeria Election Platform - Federal</title>
+  <title>Nigeria Election Platform</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
 <body>
-  <div id="loader">
-    <center>
-        <img src="img/loader.gif" alt="loader..." width="80px">
-    </center>
-  </div>
   <header>
     <nav id="side-nav">
       <div id="nav">
@@ -41,7 +34,7 @@
         </li>
         <li>
           <img class="icon" src="img/logout.png" alt="Logout Icon">
-          <a href="#" class="link">Logout</a>
+          <a href="javascript:;" class="link logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -74,7 +67,7 @@
               <a href="lga.html" class="link">LGA Elections</a>
             </li>
             <li>
-              <a href="#" class="link">Logout</a>
+              <a href="javascript:;" class="link logout">Logout</a>
             </li>
           </ul>
         </div>
@@ -84,25 +77,46 @@
           <img src="img/flag.png" alt="Nigerian Flag" width="40px">
         </li>
         <li>
-          <span>2019 Elections</span>
+          <span>Alphex Election</span>
         </li>
         <li>
           Welcome, <span class="name"></span>
         </li>
       </ul>
     </nav>
-    <h2 class="head-text">Ongoing Elections</h2>
-    <section class="elections" id="electionCategory"></section>
+    <section class="elections">
+      <h4 class="head-text-2">Elections you have participated in</h4>
+      <article class="tab head-tab">
+        <ul>
+          <li>#No</li>
+          <li>Election</li>
+          <li>Begin Date</li>
+          <li>End Date</li>
+          <li>Date Voted</li>
+        </ul>
+      </article>
+      <article class="tab">
+        <ul>
+          <li>1</li>
+          <li>Governorship</li>
+          <li>12 May 2019</li>
+          <li>23 June 2019</li>
+          <li>15 May 2019</li>
+        </ul>
+      </article>
+    </section>
   </main>
   <footer>
-    <p id="copyright">Copyright &copy; 2019 Nigerian Election Platform.</p>
+    <p id="copyright">Copyright &copy; 2019 Alphex Election.</p>
   </footer>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/sweetalert.min.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
-  <script type="text/javascript" src="js/class.js"></script>
-  <script>
-    AlphexElection.getElectionByCategory('federal','electionVoter');
-  </script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/sweetalert.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="js/class.js"></script>
+<script>
+  if (localStorage.getItem('electionVoter')==null) {
+    window.location.replace('login.html');
+  }
+</script>
 </body>
 </html>

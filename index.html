@@ -1,164 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Nigeria Election Platform</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nigeria Election Platform</title>
+    <link rel="stylesheet" href="css/style2.css">
 </head>
 <body>
-  <header>
-    <nav id="side-nav">
-      <div id="nav">
-        <a href="javascript:;" id="nav-toggle">
-          <img src="img/menu.png" alt="Toggle Nav">
-        </a>
-      </div>
-      <ul>
-        <li>
-          <img class="icon" src="img/dashboard.png" alt="Dashboad Icon">
-          <a href="index.html" class="link">Dashboard</a>
-        </li>
-        <li>
-          <img class="icon" src="img/group.png" alt="Federal Icon">
-          <a href="federal.html" class="link">Federal Elections</a>
-        </li>
-        <li>
-          <img class="icon" src="img/users.png" alt="State Icon">
-          <a href="state.html" class="link">State Elections</a>
-        </li>
-        <li>
-          <img class="icon" src="img/user.png" alt="LGA Icon">
-          <a href="lga.html" class="link">LGA Elections</a>
-        </li>
-        <li>
-          <img class="icon" src="img/logout.png" alt="Logout Icon">
-          <a href="javascript:;" class="link logout">Logout</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <main class="side">
-    <nav id="main-nav">
-      <div class="header">
-        <div class="logo">
-          <a href="index.html">
-            <img src="img/flag.png" alt="Nigerian Flag" width="40px">
-          </a>
-        </div>
-        <div id="nav-header">
-          <a href="javascript:;" id="nav-toggle-header">
-            <img src="img/menu.png" alt="Toggle Nav">
-          </a>
-        </div>
-        <div class="dropdown-nav">
-          <ul>
-            <li>
-              <a href="index.html" class="link">Dashboard</a>
-            </li>
-            <li>
-              <a href="federal.html" class="link">Federal Elections</a>
-            </li>
-            <li>
-              <a href="state.html" class="link">State Elections</a>
-            </li>
-            <li>
-              <a href="lga.html" class="link">LGA Elections</a>
-            </li>
-            <li>
-              <a href="javascript:;" class="link logout">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <ul class="head-nav">
-        <li>
-          <img src="img/flag.png" alt="Nigerian Flag" width="40px">
-        </li>
-        <li>
-          <span>2019 Elections</span>
-        </li>
-        <li>
-          Welcome, <span class="name"></span>
-        </li>
-      </ul>
-    </nav>
-    <h2 class="head-text">Ongoing Elections</h2>
-    <section class="elections">
-      <article class="card">
-        <img src="img/flag-img.jpg" alt="Flag Image">
-        <div class="card-text">
-          <p>Election: <span>Presidential</span></p>
-          <p>Category: <span>Federal</span></p>
-        </div>
-        <div class="card-btn">
-          <a href="single-election.html" class="card-btn">Vote</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="img/flag-img.jpg" alt="Flag Image">
-        <div class="card-text">
-          <p>Election: <span>Presidential</span></p>
-          <p>Category: <span>Federal</span></p>
-        </div>
-        <div class="card-btn">
-          <a href="single-election.html"  class="card-btn">Vote</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="img/flag-img.jpg" alt="Flag Image">
-        <div class="card-text">
-          <p>Election: <span>Presidential</span></p>
-          <p>Category: <span>Federal</span></p>
-        </div>
-        <div class="card-btn">
-          <a href="single-election.html"  class="card-btn">Vote</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="img/flag-img.jpg" alt="Flag Image">
-        <div class="card-text">
-          <p>Election: <span>Presidential</span></p>
-          <p>Category: <span>Federal</span></p>
-        </div>
-        <div class="card-btn">
-          <a href="single-election.html" class="card-btn">Vote</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="img/flag-img.jpg" alt="Flag Image">
-        <div class="card-text">
-          <p>Election: <span>Presidential</span></p>
-          <p>Category: <span>Federal</span></p>
-        </div>
-        <div class="card-btn">
-          <a href="single-election.html" class="card-btn">Vote</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="img/flag-img.jpg" alt="Flag Image">
-        <div class="card-text">
-          <p>Election: <span>Presidential</span></p>
-          <p>Category: <span>Federal</span></p>
-        </div>
-        <div class="card-btn">
-          <a href="single-election.html" class="card-btn">Vote</a>
-        </div>
-      </article>
+    <section id="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <span>Welcome, <span class="name"></span></span>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section id="home">
+            <div class="title">
+                <h1>Welcome to Alphex Election</h1>
+            </div>
+            <div class="text">
+                <p>Click on an election to get started</p>
+            </div>
+            <div class="buttons">
+                <a href="federal.html"><button>Federal Election</button></a>
+                <a href="state.html"><button>State Election</button></a>
+                <a href="lga.html"><button>LGA Election</button></a>
+            </div>
+        </section>
     </section>
-  </main>
-  <footer>
-    <p id="copyright">Copyright &copy; 2019 Alphex Election.</p>
-  </footer>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/sweetalert.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script src="js/class.js"></script>
-<script>
-  if (localStorage.getItem('electionVoter')==null) {
-    window.location.replace('login.html');
-  }
-</script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/class.js"></script>
+    <script>
+        if (localStorage.getItem('electionVoter')==null) {
+            window.location.replace('login.html');
+        }
+    </script>
 </body>
 </html>

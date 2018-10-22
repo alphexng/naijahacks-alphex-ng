@@ -87,6 +87,77 @@ class AlphexElection {
             }
         )
     }
+
+    static adminLogin (body) {
+        this.fetchPost(
+            '/api/auth/admin',
+            {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body,(res,data) => {
+                if (res==200) {
+                    setTimeout(()=>{window.location.href='index.html'},1200)
+                    const user = {
+                        token: data.token,
+                        user: data.user
+                    }
+                    localStorage.setItem('electionAdmin',JSON.stringify(user));
+                }
+            }
+        )
+    }
+
+    static addElection (body) {
+        const admin = JSON.parse(localStorage.getItem('electionAdmin'));
+        const token  = admin.token;
+        this.fetchPost(
+            '/api/election',
+            {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'x-access-token': token
+            },
+            body,(res,data) => {
+                if (res==201) {
+                    setTimeout(()=>{window.location.reload(true)},1200)
+                }
+            }
+        )
+    }
+
+    static getElectionByCategory (category,session) {
+        const user = JSON.parse(localStorage.getItem(session));
+        const token  = user.token;
+
+        this.fetchGet(
+            `/api/election/${category}`,
+            {
+                'x-access-token': token
+            },
+            (res,data) => {
+                $("#loader").addClass("hide");
+                if (res==200) {
+                    const elect = data.elections;
+                    let election = '';
+                    for (let i = 0; i < elect.length; i++) {
+                        const x = elect[i];
+                        election += `
+                        <article class="card">
+                            <img src="img/flag-img.jpg" alt="Flag Image">
+                            <div class="card-text">
+                            <p>Election: <span>${x.title}</span></p>
+                            </div>
+                            <div class="card-btn">
+                            <a href="single-election.html" class="card-btn">View</a>
+                            </div>
+                        </article>`;
+                    }
+                    $("#electionCategory").html(election);
+                }
+            }
+        )
+    }
 }
 
 AlphexElection.initUser();
