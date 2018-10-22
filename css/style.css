@@ -20,6 +20,10 @@ ul{
   color: rgb(32, 168, 14);
 }
 
+.header {
+  display: none;
+}
+
 #side-nav{
   width: 18%;
   background-color: rgb(23, 128, 9);
@@ -66,29 +70,64 @@ ul{
   display: inline-block;
 }
 
-#main-nav ul li:nth-child(1) img{
+.head-nav li:nth-child(1) img{
   width: 40px;
   height: 40px;
 }
 
-#main-nav ul li:nth-child(2){
+.head-nav li:nth-child(2){
   font-size:40px;
   text-transform: capitalize;
 }
 
-#main-nav ul li:nth-child(3){
+.head-nav li:nth-child(3){
   float:right;
   font-size:20px;
+}
+
+.dropdown-nav {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin-top: -3px;
+  left: 0;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+.dropdown-nav-true {
+  display: inherit;
+  transition: 0.5s all;
+}
+
+.dropdown-nav ul {
+  display: inherit !important;
+}
+
+.dropdown-nav ul li {
+  display: block !important;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.dropdown-nav ul li a {
+  color: rgb(32, 168, 14);
+  text-decoration: none;
 }
 
 .head-text{
   padding:40px;
   font-size:40px;
+  color: #333;
 }
 
 .head-text-2{
   padding:10px;
   font-size:20px;
+  color: #333;
 }
 
 .inline {
@@ -96,13 +135,13 @@ ul{
 }
 
 .dates {
-  display: inline-block;
   float:right;
   padding: 30px;
 }
 
 .elections, .candidates {
-  margin:40px;
+  margin:20px;
+  margin-bottom: 40px;
 }
 
 
@@ -163,6 +202,7 @@ footer {
   background-color:rgba(0, 0, 0, 0.856);
   color:#fff;
   text-align: center;
+  padding: 10px;
 }
 
 footer .copyright{
@@ -273,5 +313,47 @@ footer .copyright{
 }
 
 .candidate-btn:hover {
-  background-color: #000;
+  background-color: #333;
+}
+
+
+@media (max-width:600px) {
+  .header {
+    display: inherit;
+  }
+  #main-nav {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(23, 128, 9);
+    position: fixed;
+    z-index: 10;
+  }
+  #nav-header {
+    margin-top: -42px;
+    padding-right: 20px;
+    float: right;
+  }
+  #main-nav ul {
+    display: none;
+  }
+  #side-nav{
+    display: none;
+  }
+  .head-text {
+    font-size: 25px;
+    padding: 0;
+    padding-top: 80px;
+    text-align: center;
+  }
+  .side {
+    margin-left: 0;
+    padding: 0;
+  }
+  .card {
+    width: 100%;
+    margin-left: 0;
+  }
+  .card img {
+    height: unset;
+  }
 }
