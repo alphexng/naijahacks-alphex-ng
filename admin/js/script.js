@@ -31,6 +31,19 @@ $('#view-btn').click(() => {
   tab.css("height", "300px");
 });
 
+$("#nav-toggle-header").click(() => {
+  $(".dropdown-nav").toggleClass("dropdown-nav-true");
+})
+
+$("#credList li").click(function() {
+  const user = $(this).attr("user");
+  const pass = $(this).attr("pass");
+
+  $("#username").val(user);
+  $("#password").val(pass);
+  $("#credentials").click();
+})
+
 $('#add-election').click(() => {
   $('#ongoing-election-section').css("display","none");
   $('#add-election-section').css("display","block");
@@ -40,3 +53,8 @@ $('#add-candidate').click(() => {
   $('#candidates-section').css("display",'none');
   $('#add-candidate-section').css("display","block");
 });
+
+$(".logout").click(() => {
+  localStorage.removeItem('electionAdmin');
+  window.location.href = 'login.html';
+})

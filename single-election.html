@@ -39,7 +39,7 @@
         </li>
         <li>
           <img class="icon" src="img/logout.png" alt="Logout Icon">
-          <a href="#" class="link">Logout</a>
+          <a href="javascript:;" class="link logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -72,7 +72,7 @@
               <a href="lga.html" class="link">LGA Elections</a>
             </li>
             <li>
-              <a href="#" class="link">Logout</a>
+              <a href="javascript:;" class="link logout">Logout</a>
             </li>
           </ul>
         </div>
@@ -83,14 +83,14 @@
         </li>
         <li></li>
         <li>
-          Welcome Candidate
+          Welcome, <span class="name"></span>
         </li>
       </ul>
     </nav>
-    <h2 class="head-text inline">Lagos State Governorship Election</h2>
+    <h2 class="head-text electionTitle"></h2>
     <div class="dates">
-      <h4 id="start">Start Date: <span>20th May 2019</span></h4>
-      <h4 id="end">End Date: <span>31st July 2019</span></h4>
+      <h4 id="start">Start Date: <span class="electionStart"></span></h4>
+      <h4 id="end">End Date: <span class="electionEnd"></span></h4>
     </div>
     <section class="candidates">
       <h4 class="head-text-2">Candidates</h4>
@@ -105,6 +105,19 @@
       <div id="allCandidates"></div>
     </section>
   </main>
+  <div id="voteCandidate" class="modal">
+    <center>
+      <div class="modal-content">
+        <h2>Are you sure you want to vote <span id="candidateName"></span>?</h2>
+        <br>
+        <div class="buttons">
+          <button id="positiveVote">Yes</button>
+          <button class="red" id="closeVoteModal">No</button>
+        </div>
+      </div>
+    </center>
+  </div>
+  <div class="error hide"></div>
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/sweetalert.min.js"></script>
   <script type="text/javascript" src="js/class.js"></script>

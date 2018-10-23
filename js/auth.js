@@ -1,4 +1,4 @@
-const Al = AlphexElection;
+const All = AlphexElection;
 
 $("#voterLogin").submit((e) => {
     e.preventDefault();
@@ -8,7 +8,7 @@ $("#voterLogin").submit((e) => {
         username: $("#username").val(),
         password: $("#password").val()
     }
-    Al.userLogin(form);
+    All.userLogin(form);
 })
 
 $("#adminLogin").submit((e) => {
@@ -19,7 +19,7 @@ $("#adminLogin").submit((e) => {
         username: $("#username").val(),
         password: $("#password").val()
     }
-    Al.adminLogin(form);
+    All.adminLogin(form);
 })
 
 const checkLogin = (session) => {

@@ -49,5 +49,6 @@ const getCandidates = (session) => {
         return;
     }
     const str = href.substring(get+10,href.length);
+    Al.getOneElection(str,session);
     Al.getCandidates(str,session);
 }

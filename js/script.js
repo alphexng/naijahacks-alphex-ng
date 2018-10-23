@@ -75,8 +75,18 @@ const getCandidates = (session) => {
       return;
   }
   const str = href.substring(get+10,href.length);
+  Al.getOneElection(str,session);
   Al.getCandidates(str,session);
 }
+
+$("#positiveVote").click(function() {
+  $("#loader").removeClass("hide");
+  const href = window.location.href;
+  const get = href.indexOf('?election=');
+  const str = href.substring(get+10,href.length);
+  const candidate = $(this).val();
+  Al.placeVote(str,candidate);
+})
 
 modal("credB","modal","click")
 closeModal("credentials","click")

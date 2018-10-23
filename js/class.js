@@ -1,6 +1,48 @@
 const path = 'https://alphexng-election.herokuapp.com';
 
 class AlphexElection {
+    static filterDate (date) {
+        const d = new Date(date);
+        const day = d.getDate();
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+        const month = months[d.getMonth()];
+        const year = d.getFullYear();
+        return `${day} - ${month} - ${year}`;
+    }
+
+    static modal (el,attr,event) {
+        const element = document.getElementsByClassName(el);
+        for (let i = 0; i < element.length; i++) {
+            const classElement = element[i];
+            classElement.addEventListener(event,()=>{
+                const target = classElement.getAttribute(attr);
+                const element2 = document.getElementById(target);
+                element2.classList.add("modal-show");
+            })
+        }
+      }
+      
+      static closeModal (el,event) {
+        const element = document.getElementById(el);
+        document.addEventListener(event,(e)=>{
+            if (!e.target.matches('#'+el)) return;
+            element.classList.remove("modal-show");
+        })
+      }
+
     static initUser () {
         if (localStorage.getItem('electionVoter')!=null) {
             const user = JSON.parse(localStorage.getItem('electionVoter'));
@@ -120,7 +162,7 @@ class AlphexElection {
             },
             body,(res,data) => {
                 if (res==201) {
-                    setTimeout(()=>{window.location.reload(true)},1200)
+                    setTimeout(()=>{window.location.reload(true)},1200);
                 }
             }
         )
@@ -131,7 +173,7 @@ class AlphexElection {
         const token  = user.token;
 
         this.fetchGet(
-            `/api/election/${category}`,
+            `/api/election/category/${category}`,
             {
                 'x-access-token': token
             },
@@ -146,7 +188,7 @@ class AlphexElection {
                         <article class="card">
                             <img src="img/flag-img.jpg" alt="Flag Image">
                             <div class="card-text">
-                            <p>Election: <span>${x.title}</span></p>
+                            <p><span>${x.title}</span></p>
                             </div>
                             <div class="card-btn">
                             <a href="single-election.html?election=${x.election_id}" class="card-btn">View</a>
@@ -190,7 +232,13 @@ class AlphexElection {
                             </article>`;
                         }else{
                             second = `
-                                <li><a href="#" class="candidate-btn">Vote</a></li>
+                                <li>
+                                    <a href="javscript:;" 
+                                    cid="${x.candidate_id}" 
+                                    cname="${x.firstname} ${x.surname}" 
+                                    class="candidate-btn" 
+                                    mtarget="voteCandidate">Vote</a>
+                                </li>
                                 </ul>
                             </article>`;
                         }
@@ -198,6 +246,15 @@ class AlphexElection {
 
                     }
                     $("#allCandidates").html(candidates);
+                    $(".candidate-btn").click(function(){
+                        $("#candidateName").html($(this).attr("cname"));
+                        $("#positiveVote").val($(this).attr("cid"));
+                    })
+                    $("#closeVoteModal").click(function(){
+                        $("#voteCandidate").click();
+                    })
+                    AlphexElection.modal('candidate-btn','mtarget','click');
+                    AlphexElection.closeModal('voteCandidate','click');
                 }else{
                     $("#allCandidates").html(`<p class="errorMessage">${data.message}</p>`);
                 }
@@ -218,6 +275,51 @@ class AlphexElection {
             body,(res,data) => {
                 if (res==201) {
                     setTimeout(()=>{window.location.reload(true)},1200)
+                }
+            }
+        )
+    }
+
+    static getOneElection (str,session) {
+        const user = JSON.parse(localStorage.getItem(session));
+        const token  = user.token;
+
+        this.fetchGet(
+            `/api/election/${str}`,
+            {
+                'x-access-token': token
+            },
+            (res,data) => {
+                $("#loader").addClass("hide");
+                if (res==200) {
+                    const elect = data.election;
+                    $(".electionTitle").html(elect.title);
+                    $(".electionStatus").html(elect.status);
+                    $(".electionStart").html(AlphexElection.filterDate(elect.date_start));
+                    $(".electionEnd").html(AlphexElection.filterDate(elect.date_end));
+                }else if (res==404) {
+                    window.location.replace('404.html');
+                }else{
+                    $("#electionCategory").html(`<p class="errorMessage">${data.message}</p>`);
+                }
+            }
+        )
+    }
+
+    static placeVote (election,candidate) {
+        const user = JSON.parse(localStorage.getItem('electionVoter'));
+        const token  = user.token;
+        this.fetchPost(
+            `/api/election/${election}/vote/${candidate}`,
+            {
+                'x-access-token': token
+            },
+            {},
+            (res) => {
+                if (res==201) {
+                    setTimeout(()=>{window.location.reload(true)},1200);
+                }else if (res==400) {
+                    setTimeout(()=>{window.location.reload(true)},1200);
                 }
             }
         )
