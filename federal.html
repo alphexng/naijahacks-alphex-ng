@@ -41,7 +41,7 @@
         </li>
         <li>
           <img class="icon" src="img/logout.png" alt="Logout Icon">
-          <a href="#" class="link">Logout</a>
+          <a href="javascript:;" class="link logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -74,7 +74,7 @@
               <a href="lga.html" class="link">LGA Elections</a>
             </li>
             <li>
-              <a href="#" class="link">Logout</a>
+              <a href="javascript:;" class="link logout">Logout</a>
             </li>
           </ul>
         </div>
@@ -83,9 +83,7 @@
         <li>
           <img src="img/flag.png" alt="Nigerian Flag" width="40px">
         </li>
-        <li>
-          <span>2019 Elections</span>
-        </li>
+        <li></li>
         <li>
           Welcome, <span class="name"></span>
         </li>
@@ -94,14 +92,14 @@
     <h2 class="head-text">Ongoing Elections</h2>
     <section class="elections" id="electionCategory"></section>
   </main>
-  <footer>
-    <p id="copyright">Copyright &copy; 2019 Nigerian Election Platform.</p>
-  </footer>
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/sweetalert.min.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript" src="js/class.js"></script>
   <script>
+    if (localStorage.getItem('electionVoter')==null) {
+      window.location.replace('login.html');
+    }
     AlphexElection.getElectionByCategory('federal','electionVoter');
   </script>
 </body>

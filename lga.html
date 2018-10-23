@@ -9,6 +9,11 @@
 </head>
 
 <body>
+  <div id="loader">
+    <center>
+      <img src="img/loader.gif" alt="loader..." width="80px">
+    </center>
+  </div>
   <header>
     <nav id="side-nav">
       <div id="nav">
@@ -35,7 +40,7 @@
         </li>
         <li>
           <img class="icon" src="img/logout.png" alt="Logout Icon">
-          <a href="#" class="link">Logout</a>
+          <a href="javascript:;" class="link logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -68,7 +73,7 @@
               <a href="lga.html" class="link">LGA Elections</a>
             </li>
             <li>
-              <a href="#" class="link">Logout</a>
+              <a href="javascript:;" class="link logout">Logout</a>
             </li>
           </ul>
         </div>
@@ -81,28 +86,22 @@
           <span>2019 Elections</span>
         </li>
         <li>
-          Welcome Candidate
+          Welcome, <span class="name"></span>
         </li>
       </ul>
     </nav>
     <h2 class="head-text">Ongoing Elections</h2>
-    <section class="elections">
-      <article class="card">
-        <img src="img/flag-img.jpg" alt="Flag Image">
-        <div class="card-text">
-          <p>Election: <span>LGA Chairman</span></p>
-        </div>
-        <div class="card-btn">
-          <a href="single-election.html" class="card-btn">Vote</a>
-        </div>
-      </article>
-    </section>
+    <section class="elections" id="electionCategory"></section>
   </main>
-  <footer>
-    <p id="copyright">Copyright &copy; 2019 Nigerian Election Platform.</p>
-  </footer>
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/sweetalert.min.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/class.js"></script>
+  <script>
+    if (localStorage.getItem('electionVoter')==null) {
+      window.location.replace('login.html');
+    }
+    AlphexElection.getElectionByCategory('lga','electionVoter');
+  </script>
 </body>
 </html>

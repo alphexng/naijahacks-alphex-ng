@@ -1,3 +1,5 @@
+const Al = AlphexElection;
+
 let isNavVisible = true;
 
 const hideNav = () => {
@@ -62,6 +64,18 @@ const closeModal = (el,event) => {
       if (!e.target.matches('#'+el)) return;
       element.classList.remove("modal-show");
   })
+}
+
+const getCandidates = (session) => {
+  $("#loader").removeClass("hide");
+  const href = window.location.href;
+  const get = href.indexOf('?election=');
+  if (get < 0) {
+      location.href='index.html';
+      return;
+  }
+  const str = href.substring(get+10,href.length);
+  Al.getCandidates(str,session);
 }
 
 modal("credB","modal","click")

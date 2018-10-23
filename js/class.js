@@ -149,11 +149,75 @@ class AlphexElection {
                             <p>Election: <span>${x.title}</span></p>
                             </div>
                             <div class="card-btn">
-                            <a href="single-election.html" class="card-btn">View</a>
+                            <a href="single-election.html?election=${x.election_id}" class="card-btn">View</a>
                             </div>
                         </article>`;
                     }
                     $("#electionCategory").html(election);
+                }else{
+                    $("#electionCategory").html(`<p class="errorMessage">${data.message}</p>`);
+                }
+            }
+        )
+    }
+
+    static getCandidates (election,session) {
+        const user = JSON.parse(localStorage.getItem(session));
+        const token  = user.token;
+        this.fetchGet(
+            `/api/election/${election}/candidates`,
+            {
+                'x-access-token': token
+            },
+            (res,data) => {
+                $("#loader").addClass("hide");
+                if (res==200) {
+                    let candidates = '';
+                    const cand = data.candidates;
+                    for (let i = 0; i < cand.length; i++) {
+                        const x = cand[i];
+                        const first = `
+                        <article class="tab">
+                            <ul>
+                                <li>${i+1}</li>
+                                <li>${x.firstname} ${x.surname}</li>
+                                <li>${x.political_party}</li>`;
+                        let second = '';
+                        if (session=='electionAdmin') {
+                            second = `
+                                <li>${x.current_office}</li>
+                                </ul>
+                            </article>`;
+                        }else{
+                            second = `
+                                <li><a href="#" class="candidate-btn">Vote</a></li>
+                                </ul>
+                            </article>`;
+                        }
+                        candidates += first+second;
+
+                    }
+                    $("#allCandidates").html(candidates);
+                }else{
+                    $("#allCandidates").html(`<p class="errorMessage">${data.message}</p>`);
+                }
+            }
+        )
+    }
+
+    static addCandidate (body,election) {
+        const admin = JSON.parse(localStorage.getItem('electionAdmin'));
+        const token  = admin.token;
+        this.fetchPost(
+            `/api/election/${election}/candidate`,
+            {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'x-access-token': token
+            },
+            body,(res,data) => {
+                if (res==201) {
+                    setTimeout(()=>{window.location.reload(true)},1200)
                 }
             }
         )

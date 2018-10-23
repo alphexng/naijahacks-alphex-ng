@@ -38,6 +38,17 @@ ul{
   z-index: 10000;
 }
 
+.errorMessage {
+  text-align: center;
+  color: #aaa;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.clear {
+  clear: both;
+}
+
 .hide {
   display: none !important;
 }
@@ -589,5 +600,11 @@ footer .copyright{
   }
   .modal-content {
     width: 300px;
+  }
+  #add-candidate {
+    float: none;
+  }
+  .text-center {
+    text-align: center;
   }
 }

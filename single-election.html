@@ -8,6 +8,11 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+  <div id="loader">
+    <center>
+      <img src="img/loader.gif" alt="loader..." width="80px">
+    </center>
+  </div>
   <header>
     <nav id="side-nav">
       <div id="nav">
@@ -96,95 +101,18 @@
           <li>#No</li>
           <li>Candidate Name</li>
           <li>Political Party</li>
-          <li>View Candidate</li>
           <li>Vote Candidate</li>
         </ul>
       </article>
-      <article class="tab">
-        <ul>
-          <li>1</li>
-          <li>John Doe</li>
-          <li>PDP</li>
-          <li>
-            <a href="javascript:;" class="candidate-btn" id="view-btn">View</a>
-          </li>
-          <li>
-            <a href="#" class="candidate-btn">Vote</a>
-          </li>
-        </ul>
-      </article>
-      <article class="tab">
-        <ul>
-          <li>2</li>
-          <li>John Doe</li>
-          <li>PDP</li>
-          <li>
-            <a href="javascript:;" class="candidate-btn" id="view-btn">View</a>
-          </li>
-          <li>
-            <a href="#" class="candidate-btn">Vote</a>
-          </li>
-        </ul>
-      </article>
-      <article class="tab">
-        <ul>
-          <li>3</li>
-          <li>John Doe</li>
-          <li>PDP</li>
-          <li>
-            <a href="javascript:;" class="candidate-btn" id="view-btn">View</a>
-          </li>
-          <li>
-            <a href="#" class="candidate-btn">Vote</a>
-          </li>
-        </ul>
-      </article>
-      <article class="tab">
-        <ul>
-          <li>4</li>
-          <li>John Doe</li>
-          <li>PDP</li>
-          <li>
-            <a href="javascript:;" class="candidate-btn" id="view-btn">View</a>
-          </li>
-          <li>
-            <a href="#" class="candidate-btn">Vote</a>
-          </li>
-        </ul>
-      </article>
-      <article class="tab">
-        <ul>
-          <li>5</li>
-          <li>John Doe</li>
-          <li>PDP</li>
-          <li>
-            <a href="javascript:;" class="candidate-btn" id="view-btn">View</a>
-          </li>
-          <li>
-            <a href="#" class="candidate-btn">Vote</a>
-          </li>
-        </ul>
-      </article>
-      <article class="tab">
-        <ul>
-          <li>6</li>
-          <li>John Doe</li>
-          <li>PDP</li>
-          <li>
-            <a href="javascript:;" class="candidate-btn" id="view-btn">View</a>
-          </li>
-          <li>
-            <a href="#" class="candidate-btn">Vote</a>
-          </li>
-        </ul>
-      </article>
+      <div id="allCandidates"></div>
     </section>
   </main>
-  <footer>
-    <p id="copyright">Copyright &copy; 2019 Nigerian Election Platform.</p>
-  </footer>
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/sweetalert.min.js"></script>
+  <script type="text/javascript" src="js/class.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
+  <script>
+    getCandidates('electionVoter');
+  </script>
 </body>
 </html>

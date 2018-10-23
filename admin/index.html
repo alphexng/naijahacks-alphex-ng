@@ -184,13 +184,15 @@
     </div>
   </main>
   <div class="error hide"></div>
-  <footer>
-    <p id="copyright">Copyright &copy; 2019 Nigerian Election Platform.</p>
-  </footer>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/sweetalert.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="../js/class.js"></script>
 <script type="text/javascript" src="js/election.js"></script>
+<script>
+  if (localStorage.getItem('electionAdmin')==null) {
+    window.location.replace('login.html');
+  }
+</script>
 </body>
 </html>
