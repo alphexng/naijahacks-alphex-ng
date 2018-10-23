@@ -43,7 +43,7 @@ const Route = (app) => {
     )
 
     app.get(
-        '/api/election/:category',
+        '/api/election/category/:category',
         tokendecode,
         ElectionM.getElectionByCategory,
         Election.getElectionByCategory
@@ -75,6 +75,14 @@ const Route = (app) => {
         ElectionM.checkUserVote,
         ElectionM.placeVote,
         Election.placeVote
+    )
+
+    app.get(
+        '/api/election/:id',
+        tokendecode,
+        ElectionM.checkElectionID,
+        ElectionM.getOneElection,
+        Election.getOneElection
     )
 }
 

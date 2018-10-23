@@ -43,6 +43,14 @@ class Election {
             message: 'Vote placed successfully'
         })
     }
+
+    static getOneElection (req,resp) {
+        return resp.status(200).send({
+            status: 'success',
+            message: 'Returning one election',
+            election: req.election
+        })
+    }
 }
 
 export default Election;

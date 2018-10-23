@@ -148,6 +148,20 @@ class ElectionQuery {
             values: [voter,candidate,election]
         }
     }
+
+    static getOneElection (id) {
+        return {
+            text: `
+            SELECT election_id,
+            title,
+            category,
+            date_start,
+            date_end,
+            status FROM election
+            WHERE election_id = $1 AND status != $2`,
+            values: [id,'finished']
+        }
+    }
 }
 
 export default ElectionQuery;

@@ -239,6 +239,30 @@ class ElectionM {
             })
         })
     }
+
+    static getOneElection (req,resp,next) {
+        db.query(ElectionQuery.getOneElection(
+            req.params.id
+        ))
+        .then((res) => {
+            if (res.rows.length < 1) {
+                return resp.status(404).send({
+                    status: 'error',
+                    message: 'This election does not exist'
+                })
+            }else{
+                const [ret] = res.rows;
+                req.election = ret;
+                next();
+            }
+        })
+        .catch((err) => {
+            return resp.status(500).send({
+                status: 'error',
+                message: 'You encountered a server error'
+            })
+        })
+    }
 }
 
 export default ElectionM;
