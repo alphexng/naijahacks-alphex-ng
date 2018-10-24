@@ -88,8 +88,8 @@ $("#positiveVote").click(function() {
   Al.placeVote(str,candidate);
 })
 
-modal("credB","modal","click")
-closeModal("credentials","click")
+modal("credB","modal","click");
+closeModal("credentials","click");
 
 $(".logout").click(() => {
   localStorage.removeItem('electionVoter');

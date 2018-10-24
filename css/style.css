@@ -1,6 +1,7 @@
 *{
   margin:0;
   padding: 0;
+  font-family: 'Exo', sans-serif;
 }
 
 html, body{
@@ -8,8 +9,8 @@ html, body{
   height: 100%;
 }
 
-body{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+button, input {
+  outline: none;
 }
 
 ul{
@@ -268,8 +269,9 @@ footer .copyright{
   background-color: rgba(0, 0, 0, .8);
   top: 0;
   z-index: 1000;
-  padding-top: 100px;
+  padding-top: 50px;
   display: none;
+  overflow-y: auto;
   transition: 0.5s all;
 }
 
@@ -283,6 +285,7 @@ footer .copyright{
   padding: 20px;
   border-radius: 3px;
   text-align: left;
+  margin-bottom: 50px;
 }
 
 .modal-content h2 {
@@ -396,7 +399,7 @@ footer .copyright{
 }
 
 .form-group{
-  padding: 10px 40px;
+  padding: 10px;
 }
 
 .form-input{
@@ -451,7 +454,7 @@ footer .copyright{
   background-color: rgb(32, 168, 14);
   color: #fff;
   font-size: 15px;
-  border-radius: 10px;
+  border-radius: 3px;
   text-decoration: none;
 }
 
@@ -460,31 +463,6 @@ footer .copyright{
 }
 
 /** Admin Pages **/
-
-.candidate-btn, .btn, .add-form>button{
-  padding:6px 30px;
-  background-color: rgb(32, 168, 14);
-  color: #fff;
-  font-size: 15px;
-  border-radius: 10px;
-  text-decoration: none;
-}
-
-.candidate-btn:hover {
-  background-color: #000;
-}
-
-.btn{
-  padding:12px 18px;
-  float:right;
-  margin-top:30px;
-  margin-right: 30px;
-}
-
-.btn:hover, .add-form>button:hover{
-  background-color: rgba(0, 0, 0, 0.842);
-  cursor: pointer;
-}
 
 #inline {
   display: inline-block;
@@ -495,32 +473,29 @@ footer .copyright{
   display: block;
 }
 
-#add-election-section{
-  display: none;
+.add-election {
+  padding-top: 150px;
+  text-align: center;
+}
+
+.add-election button {
+  width: 200px;
+  padding: 20px;
 }
 
 .add-form input, .add-form select{
   height: 40px;
-  width: 30%;
-  border-radius: 10px;
+  width: 100%;
+  border-radius: 3px;
   border: 0.5px solid rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-.add-form .form-group:nth-child(1) input{
-  text-align: left;
-}
-
-.add-form button{
-  padding: 15px 80px;
-  margin:20px 40px;
+  padding: 5px;
 }
 
 .badge{
   background-color: rgb(32, 168, 14);
   color: #fff;
   border-radius: 5px;
-  padding: 4px;
+  padding: 2px;
 }
 
 #add-candidate{
@@ -532,10 +507,6 @@ footer .copyright{
   display: block;
 }
 
-#add-candidate-section{
-  display: none;
-}
-
 .form-text{
   padding:20px;
 }
@@ -544,7 +515,7 @@ footer .copyright{
   text-align: center;
 }
 
-.buttons button {
+.buttons button, button {
   background-color: rgb(5, 146, 64);
   color: #fff;
   border: 2px solid transparent;
@@ -562,7 +533,7 @@ footer .copyright{
   border: 2px solid rgb(187, 48, 24);
 }
 
-.buttons button:hover {
+.buttons button:hover, button:hover {
   background-color: #fff;
   color: rgb(5, 146, 64);
   border: 2px solid rgb(5, 146, 64);

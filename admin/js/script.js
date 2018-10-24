@@ -35,6 +35,26 @@ $("#nav-toggle-header").click(() => {
   $(".dropdown-nav").toggleClass("dropdown-nav-true");
 })
 
+const modal = (el,attr,event) => {
+  const element = document.getElementsByClassName(el);
+  for (let i = 0; i < element.length; i++) {
+      const classElement = element[i];
+      classElement.addEventListener(event,()=>{
+          const target = classElement.getAttribute(attr);
+          const element2 = document.getElementById(target);
+          element2.classList.add("modal-show");
+      })
+  }
+}
+
+const closeModal = (el,event) => {
+  const element = document.getElementById(el);
+  document.addEventListener(event,(e)=>{
+      if (!e.target.matches('#'+el)) return;
+      element.classList.remove("modal-show");
+  })
+}
+
 $("#credList li").click(function() {
   const user = $(this).attr("user");
   const pass = $(this).attr("pass");
@@ -44,15 +64,11 @@ $("#credList li").click(function() {
   $("#credentials").click();
 })
 
-$('#add-election').click(() => {
-  $('#ongoing-election-section').css("display","none");
-  $('#add-election-section').css("display","block");
-});
+modal("add-candidate","modal","click");
+closeModal("add-candidate-section","click");
 
-$('#add-candidate').click(() => {
-  $('#candidates-section').css("display",'none');
-  $('#add-candidate-section').css("display","block");
-});
+modal("add-election-btn","modal","click");
+closeModal("add-election-section","click");
 
 $(".logout").click(() => {
   localStorage.removeItem('electionAdmin');

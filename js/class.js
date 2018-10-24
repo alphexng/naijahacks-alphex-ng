@@ -89,6 +89,7 @@ class AlphexElection {
         .catch((err) => {
             loader.classList.add('hide');
             AlphexElection.errCall('Connection to the server failed',500);
+            window.location.replace('500.html');
         });
     }
 
@@ -107,6 +108,7 @@ class AlphexElection {
         )
         .catch((err) => {
             AlphexElection.errCall('Connection to the server failed',500);
+            window.location.replace('500.html');
         });
     }
 

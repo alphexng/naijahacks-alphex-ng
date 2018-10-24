@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Nigeria Election Platform - Admin</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 </head>
 <body>
   <div id="loader" class="hide">
@@ -88,99 +89,41 @@
       </ul>
     </nav>
     <div id="ongoing-election-section">
-      <h2 class="head-text">Ongoing Elections</h2>
-      <button class="btn" id="add-election">Add Election</button>
-      <section id=""></section>
-      <!-- <section class="elections">
-        <article class="card">
-          <img src="img/flag-img.jpg" alt="Flag Image">
-          <div class="card-text">
-            <p>Election: <span>Presidential</span></p>
-            <p>Category: <span>Federal</span></p>
-          </div>
-          <div class="card-btn">
-            <a href="single-election.html" class="card-btn">View Election</a>
-          </div>
-        </article>
-        <article class="card">
-          <img src="img/flag-img.jpg" alt="Flag Image">
-          <div class="card-text">
-            <p>Election: <span>Presidential</span></p>
-            <p>Category: <span>Federal</span></p>
-          </div>
-          <div class="card-btn">
-            <a href="single-election.html" class="card-btn">View Election</a>
-          </div>
-        </article>
-        <article class="card">
-          <img src="img/flag-img.jpg" alt="Flag Image">
-          <div class="card-text">
-            <p>Election: <span>Presidential</span></p>
-            <p>Category: <span>Federal</span></p>
-          </div>
-          <div class="card-btn">
-            <a href="single-election.html" class="card-btn">View Election</a>
-          </div>
-        </article>
-        <article class="card">
-          <img src="img/flag-img.jpg" alt="Flag Image">
-          <div class="card-text">
-            <p>Election: <span>Presidential</span></p>
-            <p>Category: <span>Federal</span></p>
-          </div>
-          <div class="card-btn">
-            <a href="single-election.html" class="card-btn">View Election</a>
-          </div>
-        </article>
-        <article class="card">
-          <img src="img/flag-img.jpg" alt="Flag Image">
-          <div class="card-text">
-            <p>Election: <span>Presidential</span></p>
-            <p>Category: <span>Federal</span></p>
-          </div>
-          <div class="card-btn">
-            <a href="single-election.html"  class="card-btn">View Election</a>
-          </div>
-        </article>
-        <article class="card">
-          <img src="img/flag-img.jpg" alt="Flag Image">
-          <div class="card-text">
-            <p>Election: <span>Presidential</span></p>
-            <p>Category: <span>Federal</span></p>
-          </div>
-          <div class="card-btn">
-            <a href="single-election.html"  class="card-btn">View Election</a>
-          </div>
-        </article>
-      </section> -->
-    </div>
-    <div id="add-election-section">
-      <h2 class="head-text form-text" id="inline">Add New Election</h2>
-      <form id="add-election-form" class="add-form">
-        <div class="form-group">
-          <label for="">Election Type:</label>
-          <input type="text" class="election" id="title">
-        </div>
-        <div class="form-group">
-          <label for="">Election Category</label>
-          <select name="election-cat" id="election-cat">
-            <option value="Federal">Federal</option>
-            <option value="State">State</option>
-            <option value="LGA">Local Government Area</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="">Election Start Date:</label>
-          <input type="date" class="start-date" id="start-date">
-        </div>
-        <div class="form-group">
-          <label for="">Election End Date:</label>
-          <input type="date" class="end-date" id="end-date">
-        </div>
-        <button type="submit">Add</button>
-      </form>
+      <div class="add-election">
+        <button class="btn add-election-btn" modal="add-election-section" id="add-election">Add an Election</button>
+      </div>
     </div>
   </main>
+  <div id="add-election-section" class="modal">
+    <center>
+      <div class="modal-content">
+        <h2 class="head-text form-text" id="inline">Add New Election</h2>
+        <form id="add-election-form" class="add-form">
+          <div class="form-group">
+            <label for="">Election:</label>
+            <input type="text" class="election" id="title" placeholder="Election">
+          </div>
+          <div class="form-group">
+            <label for="">Election Category</label>
+            <select name="election-cat" id="election-cat">
+              <option value="Federal">Federal</option>
+              <option value="State">State</option>
+              <option value="LGA">Local Government Area</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Election Start Date:</label>
+            <input type="date" class="start-date" id="start-date">
+          </div>
+          <div class="form-group">
+            <label for="">Election End Date:</label>
+            <input type="date" class="end-date" id="end-date">
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </center>
+  </div>
   <div class="error hide"></div>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/sweetalert.min.js"></script>
